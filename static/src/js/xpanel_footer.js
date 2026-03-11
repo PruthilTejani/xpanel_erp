@@ -198,7 +198,7 @@
                 window.location.href = '/web?action=hr_timesheet.act_hr_timesheet_line';
                 break;
             case 'assistant':
-                alert("This feature will be available soon. You will be notified once it is ready.");
+                window.dispatchEvent(new CustomEvent('ai-copilot-toggle'));
                 break;
             case 'analytics':
                 window.location.href = '/odoo/dashboards';
@@ -255,13 +255,13 @@
             navigator.serviceWorker.ready.then(registration => {
                 registration.showNotification(title, {
                     body: body,
-                    icon: '/xpanel_erp/static/src/img/xpanelerp.png',
+                    icon: '/pwa/static/src/img/xpanelerp.png',
                     tag: 'xpanelerp-notification',
                     renotify: true
                 });
             });
         } else {
-            new Notification(title, { body: body, icon: '/xpanel_erp/static/src/img/xpanelerp.png' });
+            new Notification(title, { body: body, icon: '/pwa/static/src/img/xpanelerp.png' });
         }
     }
 })();

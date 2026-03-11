@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'XpanelERP PWA',
+    'name': 'PWA',
     'version': '1.0.0',
     'category': 'Web',
-    'summary': 'Progressive Web App wrapper and UI customization for Odoo',
+    'summary': 'Progressive Web App wrapper and UI customization',
     'description': """
-        XpanelERP PWA Module
+        PWA Module
         ====================
         - Makes Odoo installable as a PWA
         - Custom loading/splash screen
@@ -13,22 +13,21 @@
         - Black & white solid UI
         - Mobile and desktop support
     """,
-    'author': 'XpanelERP',
-    'website': 'https://xpanelerp.com',
+    'author': 'Pruthil Tejani',
     'depends': ['web', 'hr_timesheet', 'website'],
     'data': [
         'views/templates.xml',
     ],
     'assets': {
         'web.assets_backend': [
-            'xpanel_erp/static/src/css/xpanel_footer.css',
-            'xpanel_erp/static/src/css/loading.css',
-            'xpanel_erp/static/src/js/xpanel_footer.js',
+            'pwa/static/src/css/xpanel_footer.css',
+            'pwa/static/src/css/loading.css',
+            'pwa/static/src/js/xpanel_footer.js',
         ],
         'web.assets_frontend': [
-            'xpanel_erp/static/src/css/xpanel_footer.css',
-            'xpanel_erp/static/src/css/loading.css',
-            'xpanel_erp/static/src/js/xpanel_footer.js',
+            'pwa/static/src/css/xpanel_footer.css',
+            'pwa/static/src/css/loading.css',
+            'pwa/static/src/js/xpanel_footer.js',
         ],
     },
     'installable': True,

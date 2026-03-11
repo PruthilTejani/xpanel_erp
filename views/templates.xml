@@ -2,17 +2,17 @@
 <odoo>
     <data>
         <template id="manifest_json" name="PWA Manifest Assets">
-            <link id="xpanel_manifest" rel="manifest" href="/xpanel_erp/static/manifest.json?v=1.0.2"/>
-            <link id="xpanel_icon" rel="icon" type="image/png" href="/xpanel_erp/static/src/img/xpanelerp.png?v=1.0.2"/>
-            <link id="xpanel_shortcut_icon" rel="shortcut icon" type="image/png" href="/xpanel_erp/static/src/img/xpanelerp.png?v=1.0.2"/>
-            <link id="xpanel_apple_icon" rel="apple-touch-icon" href="/xpanel_erp/static/src/img/xpanelerp.png?v=1.0.2"/>
+            <link id="xpanel_manifest" rel="manifest" href="/pwa/static/manifest.json?v=1.0.2"/>
+            <link id="xpanel_icon" rel="icon" type="image/png" href="/pwa/static/src/img/xpanelerp.png?v=1.0.2"/>
+            <link id="xpanel_shortcut_icon" rel="shortcut icon" type="image/png" href="/pwa/static/src/img/xpanelerp.png?v=1.0.2"/>
+            <link id="xpanel_apple_icon" rel="apple-touch-icon" href="/pwa/static/src/img/xpanelerp.png?v=1.0.2"/>
             
             <meta name="apple-mobile-web-app-capable" content="yes"/>
             <meta name="mobile-web-app-capable" content="yes"/>
             <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
             <meta name="apple-mobile-web-app-title" content="XpanelERP"/>
             <meta name="application-name" content="XpanelERP"/>
-            <meta name="theme-color" content="#000000"/>
+            <meta name="theme-color" content="#010309"/>
 
             <script type="text/javascript">
                 <![CDATA[
@@ -47,8 +47,8 @@
                         });
 
                         const theme = document.querySelector('meta[name="theme-color"]');
-                        if (theme && theme.getAttribute('content') !== '#000000') {
-                            theme.setAttribute('content', '#000000');
+                        if (theme && theme.getAttribute('content') !== '#010309') {
+                            theme.setAttribute('content', '#010309');
                         }
 
                         const websiteFavicon = document.querySelector('link[href*="favicon.ico"]');
@@ -76,12 +76,12 @@
                     window.addEventListener('load', function() {
                         navigator.serviceWorker.getRegistrations().then(function(registrations) {
                             for(let registration of registrations) {
-                                if (!registration.active || !registration.active.scriptURL.includes('xpanel_erp')) {
+                                if (!registration.active || !registration.active.scriptURL.includes('pwa')) {
                                     registration.unregister();
                                 }
                             }
                         });
-                        navigator.serviceWorker.register('/xpanel_erp/static/sw.js?v=1.0.3')
+                        navigator.serviceWorker.register('/pwa/static/sw.js?v=1.0.3')
                             .then(reg => console.log('XpanelERP: SW registered'))
                             .catch(err => console.log('XpanelERP: SW failed', err));
                     });
@@ -92,8 +92,8 @@
 
         <template id="layout_inherit_pwa" inherit_id="web.layout">
             <xpath expr="//head/*[1]" position="before">
-                <t t-call="xpanel_erp.manifest_json"/>
-                <t t-call="xpanel_erp.service_worker_registration"/>
+                <t t-call="pwa.manifest_json"/>
+                <t t-call="pwa.service_worker_registration"/>
             </xpath>
         </template>
 
@@ -173,14 +173,14 @@
 
         <template id="website_layout_inherit_pwa" inherit_id="website.layout">
             <xpath expr="//head/*[1]" position="before">
-                <t t-call="xpanel_erp.manifest_json"/>
-                <t t-call="xpanel_erp.service_worker_registration"/>
+                <t t-call="pwa.manifest_json"/>
+                <t t-call="pwa.service_worker_registration"/>
             </xpath>
         </template>
 
         <template id="webclient_bootstrap_inherit" inherit_id="web.webclient_bootstrap">
             <xpath expr="." position="inside">
-                <t t-call="xpanel_erp.xpanel_footer_template" groups="base.group_user"/>
+                <t t-call="pwa.xpanel_footer_template" groups="base.group_user"/>
             </xpath>
         </template>
     </data>

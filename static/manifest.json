@@ -1,42 +1,39 @@
 {
-    "name": "XpanelERP",
-    "short_name": "XpanelERP",
-    "description": "XpanelERP - Professional ERP Solution",
-    "start_url": "/web",
-    "scope": "/",
-    "display": "standalone",
-    "background_color": "#000000",
-    "theme_color": "#000000",
-    "orientation": "portrait",
-    "icons": [
+  "name": "XpanelERP",
+  "short_name": "XpanelERP",
+  "description": "XpanelERP - Professional ERP Solution",
+  "start_url": "/web",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#010309",
+  "theme_color": "#010309",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/pwa/static/src/img/xpanelerp.png?v=1.0.2",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa/static/src/img/xpanelerp.png?v=1.0.2",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Worklogs",
+      "short_name": "Worklogs",
+      "url": "/web?action=hr_timesheet.act_hr_timesheet_line",
+      "icons": [
         {
-            "src": "/xpanel_erp/static/src/img/xpanelerp.png?v=1.0.2",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "/xpanel_erp/static/src/img/xpanelerp.png?v=1.0.2",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "any maskable"
+          "src": "/pwa/static/src/img/xpanelerp.png?v=1.0.2",
+          "sizes": "512x512"
         }
-    ],
-    "categories": [
-        "business",
-        "productivity"
-    ],
-    "shortcuts": [
-        {
-            "name": "Worklogs",
-            "short_name": "Worklogs",
-            "url": "/web?action=hr_timesheet.act_hr_timesheet_line",
-            "icons": [
-                {
-                    "src": "/xpanel_erp/static/src/img/xpanelerp.png?v=1.0.2",
-                    "sizes": "512x512"
-                }
-            ]
-        }
-    ]
+      ]
+    }
+  ]
 }

@@ -30,7 +30,7 @@ body.o_web_client .xpanel-footer {
     left: 20px;
     right: 20px;
     height: 65px;
-    background-color: #000000;
+    background-color: #010309;
     border-radius: 35px;
     z-index: 9998;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
@@ -191,6 +191,10 @@ body.o_web_client .xpanel-footer-btn.xpanel-btn-disabled {
 .xpanel-console-item span {
     font-size: 13px;
     font-weight: 500;
+}
+
+.o-mail-Discuss {
+    padding-bottom: 70px !important;
 }
 
 @media (max-width: 768px) {

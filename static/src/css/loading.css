@@ -1,62 +1,62 @@
 .o_blockUI .o_message {
-    display: none !important;
+  display: none !important;
 }
 
 .o_blockUI {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    width: 100vw !important;
-    height: 100vh !important;
-    top: 0 !important;
-    left: 0 !important;
-    z-index: 9999 !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 100vw !important;
+  height: 100vh !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 9999 !important;
 
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(5px);
 }
 
 body.o_dark_mode .o_blockUI,
 .o_web_client.o_dark_mode .o_blockUI {
-    background-color: rgba(18, 18, 18, 0.95) !important;
-    color: white;
+  background-color: rgba(18, 18, 18, 0.95) !important;
+  color: white;
 }
 
 .o_blockUI::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 80px;
+  content: "";
+  display: block;
+  width: 80px;
+  height: 80px;
 
-    border-radius: 50%;
-    border: 3px solid transparent;
-    border-top-color: #714B67;
-    border-right-color: #3498db;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #714b67;
+  border-right-color: #3498db;
 
-    background: transparent;
+  background: transparent;
 
-    background-image: url('/xpanel_erp/static/src/img/loading.gif');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    border: none;
+  background-image: url("/pwa/static/src/img/loading.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
 }
 
 body.o_dark_mode .o_blockUI::after,
 .o_web_client.o_dark_mode .o_blockUI::after {
-    border-top-color: #a29bfe;
-    border-right-color: #74b9ff;
+  border-top-color: #a29bfe;
+  border-right-color: #74b9ff;
 }
 
 .o_blockUI::before {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid rgba(0, 0, 0, 0.05);
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.05);
 }
 
 body.o_dark_mode .o_blockUI::before {
-    border-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.05);
 }

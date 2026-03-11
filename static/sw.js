@@ -2,9 +2,9 @@
 const CACHE_NAME = 'xpanelerp';
 const urlsToCache = [
     '/web',
-    '/xpanel_erp/static/src/css/xpanel_footer.css',
-    '/xpanel_erp/static/src/js/xpanel_footer.js',
-    '/xpanel_erp/static/src/img/xpanelerp.png',
+    '/pwa/static/src/css/xpanel_footer.css',
+    '/pwa/static/src/js/xpanel_footer.js',
+    '/pwa/static/src/img/xpanelerp.png',
 ];
 
 self.addEventListener('install', function (event) {
