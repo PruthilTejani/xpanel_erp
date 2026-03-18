@@ -142,32 +142,72 @@
             });
         });
 
-        const consoleItems = footer.querySelectorAll('.xpanel-console-item');
-        consoleItems.forEach(item => {
-            const newItem = item.cloneNode(true);
-            item.parentNode.replaceChild(newItem, item);
-            newItem.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+        const consoleApps = document.querySelectorAll('.xpanel-console-app');
+        consoleApps.forEach(app => {
+            if (app.dataset.listenerAttached) return;
+            app.dataset.listenerAttached = 'true';
+
+            app.addEventListener('click', function (e) {
                 const action = this.getAttribute('data-action');
-                handleConsoleAction(action);
-                document.getElementById('xpanel_console_menu')?.classList.remove('show');
+                const core = window.odoo && window.odoo.define && window.odoo.define.modules && window.odoo.define.modules['web.core'] ? window.odoo.define.modules['web.core'].dependencies[0] : null;
+                const notificationEvent = new CustomEvent('display_notification', {
+                    detail: {
+                        title: 'Coming Soon',
+                        message: 'This feature will be available soon.',
+                        type: 'warning',
+                    }
+                });
+
+                if (typeof owl !== 'undefined' && owl.Component && owl.Component.env && owl.Component.env.services.notification) {
+                    owl.Component.env.services.notification.add("This feature will be available soon.", {
+                        title: "Coming Soon",
+                        type: "warning",
+                    });
+                } else if (window.$) {
+                    $('body').trigger('display_notification', {
+                        title: 'Coming Soon',
+                        message: 'This feature will be available soon.',
+                        type: 'warning'
+                    });
+                }
             });
         });
+
+        const searchInput = document.getElementById('xpanel_console_search_input');
+        if (searchInput && !searchInput.dataset.listenerAttached) {
+            searchInput.dataset.listenerAttached = 'true';
+            searchInput.addEventListener('input', function (e) {
+                const query = e.target.value.toLowerCase();
+                const apps = document.querySelectorAll('.xpanel-console-app');
+                apps.forEach(app => {
+                    const nameEl = app.querySelector('.o-app-menu-item__name');
+                    if (nameEl && nameEl.innerText.toLowerCase().includes(query)) {
+                        app.style.display = 'flex';
+                    } else if (nameEl) {
+                        app.style.display = 'none';
+                    }
+                });
+            });
+        }
 
         updateActiveState();
     }
 
-    document.addEventListener('click', function(e) {
-        const menu = document.getElementById('xpanel_console_menu');
+    document.addEventListener('click', function (e) {
+        const grid = document.getElementById('xpanel_console_grid');
         const footer = document.getElementById('xpanel_footer');
-        if (!menu || !footer) return;
-        
+        if (!grid || !footer) return;
+
         const consoleBtn = footer.querySelector('[data-action="console"]');
-        if (menu.classList.contains('show') && !menu.contains(e.target) && !consoleBtn?.contains(e.target)) {
-            menu.classList.remove('show');
+        if (grid.classList.contains('show')) {
+            const container = grid.querySelector('.app-menu-container');
+            if (grid.contains(e.target) && container && !container.contains(e.target) && !consoleBtn?.contains(e.target)) {
+                grid.classList.remove('show');
+            } else if (!grid.contains(e.target) && !consoleBtn?.contains(e.target)) {
+                grid.classList.remove('show');
+            }
         }
-    });
+    }, true);
 
     function updateActiveState() {
         const footer = document.getElementById('xpanel_footer');
@@ -176,7 +216,7 @@
         const url = window.location.href;
         const hash = window.location.hash;
         const buttons = footer.querySelectorAll('.xpanel-footer-btn');
-        
+
         buttons.forEach(btn => btn.classList.remove('active'));
 
         if (url.includes('hr_timesheet') || hash.includes('hr_timesheet')) {
@@ -189,9 +229,12 @@
     function handleFooterAction(action) {
         switch (action) {
             case 'console':
-                const menu = document.getElementById('xpanel_console_menu');
-                if (menu) {
-                    menu.classList.toggle('show');
+                const grid = document.getElementById('xpanel_console_grid');
+                if (grid) {
+                    grid.classList.toggle('show');
+                    if (grid.classList.contains('show')) {
+                        document.getElementById('xpanel_console_search_input')?.focus();
+                    }
                 }
                 break;
             case 'worklogs':
@@ -208,16 +251,6 @@
                 break;
         }
         setTimeout(updateActiveState, 500);
-    }
-
-    function handleConsoleAction(action) {
-        switch (action) {
-            case 'ai_credits':
-            case 'reporting':
-            case 'drive':
-                alert("This feature will be available soon. You will be notified once it is ready.");
-                break;
-        }
     }
 
     window.addEventListener('load', function () {
