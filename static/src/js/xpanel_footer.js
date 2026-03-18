@@ -229,19 +229,26 @@
     function handleFooterAction(action) {
         switch (action) {
             case 'console':
-                const grid = document.getElementById('xpanel_console_grid');
-                if (grid) {
-                    grid.classList.toggle('show');
-                    if (grid.classList.contains('show')) {
-                        document.getElementById('xpanel_console_search_input')?.focus();
-                    }
-                }
+                // const grid = document.getElementById('xpanel_console_grid');
+                // if (grid) {
+                //     grid.classList.toggle('show');
+                //     if (grid.classList.contains('show')) {
+                //         document.getElementById('xpanel_console_search_input')?.focus();
+                //     }
+                // }
+                owl.Component.env.services.notification.add("This feature will be available soon.", {
+                    title: "Coming Soon",
+                    type: "warning",
+                });
                 break;
             case 'worklogs':
                 window.location.href = '/web?action=hr_timesheet.act_hr_timesheet_line';
                 break;
             case 'assistant':
-                window.dispatchEvent(new CustomEvent('ai-copilot-toggle'));
+                owl.Component.env.services.notification.add("This feature will be available soon.", {
+                    title: "Coming Soon",
+                    type: "warning",
+                });
                 break;
             case 'analytics':
                 window.location.href = '/odoo/dashboards';
