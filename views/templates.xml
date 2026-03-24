@@ -31,7 +31,7 @@
                         if (document.title.toLowerCase().includes('odoo')) {
                             document.title = document.title.replace(/Odoo/gi, 'XpanelERP');
                         } else if (!document.title.includes('XpanelERP')) {
-                            document.title = 'XpanelERP | ' + document.title;
+                            document.title = 'XpanelERP';
                         }
 
                         ['apple-mobile-web-app-title', 'application-name'].forEach(name => {
